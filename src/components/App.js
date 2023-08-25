@@ -40,7 +40,7 @@ let [number,Setnumber]=useState(0)
 console.log(number)  
   return (
     <div>
-        <ul>{items.map((element,index)=>{
+        <ul>{ number<=30 && items.map((element,index)=>{
         if(index<number){
           return <li>{element}</li>
         }
