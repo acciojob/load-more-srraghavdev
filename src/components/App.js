@@ -1,5 +1,5 @@
 
-import React from "react";
+import React,{useState} from "react";
 import './../styles/App.css';
 
 const items = [
@@ -36,9 +36,17 @@ const items = [
 ];
 
 const App = () => {
+let [number,Setnumber]=useState(0)
+console.log(number)  
   return (
     <div>
-        {/* Do not remove the main div */}
+        <ul>{items.map((element,index)=>{
+        if(index<number){
+          return <li>{element}</li>
+        }
+       })}
+       </ul>
+        <button onClick={()=>Setnumber(number+10)}>Load More</button>
     </div>
   )
 }
