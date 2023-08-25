@@ -1,5 +1,5 @@
 
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import './../styles/App.css';
 
 const items = [
@@ -37,14 +37,26 @@ const items = [
 
 const App = () => {
 let [number,Setnumber]=useState(0)
-console.log(number)  
+let [arr,Setarr]=useState([])
+console.log(number,arr)
+useEffect(()=>{
+  let temparr=[]
+temparr=items.filter((element,index)=>{
+        if(index<number){
+          return true
+        }
+        else{
+          return false
+        }
+       })
+Setarr(temparr)
+},[number])  
   return (
     <div>
-        <ul>{ number<=30 && items.map((element,index)=>{
-        if(index<number){
+        <ul>{ arr.map((element,index)=>{
           return <li>{element}</li>
-        }
-       })}
+       })
+      }
        </ul>
         <button onClick={()=>Setnumber(number+10)}>Load More</button>
     </div>
